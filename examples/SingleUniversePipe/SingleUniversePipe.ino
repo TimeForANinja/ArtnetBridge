@@ -6,8 +6,9 @@ byte broadcast[] = {10, 0, 0, 255};
 
 ArtnetBridge bridge;
 void setup() {
-  Serial.begin(250000);
+  // start listsening
   bridge.setup(mac, ip, broadcast);
+  // map universe 1 to pin 3
   bridge.addRedirect(0, 3);
 }
 

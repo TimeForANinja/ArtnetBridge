@@ -22,8 +22,8 @@ uint8_t * ArtnetBridgeStorage::getDMXByIndex(uint8_t index) {
   return dmxData[index];
 }
 
-void ArtnetBridgeStorage::readUniverse(uint16_t universe, EthernetUDP udp) {
-  udp.read(dmxData[getIndexFromUniverse(universe)], MAX_DMX);
+void ArtnetBridgeStorage::readUniverse(uint16_t universe, EthernetUDP *Udp) {
+  Udp->read(dmxData[getIndexFromUniverse(universe)], MAX_DMX);
 }
 
 bool ArtnetBridgeStorage::hasUniverse(uint16_t universe) {

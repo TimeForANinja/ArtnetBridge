@@ -13,7 +13,7 @@ public:
   void newUniverse(uint16_t universe, uint8_t pin);
   uint8_t * getDMXByUniverse(uint16_t universe);
   uint8_t * getDMXByIndex(uint8_t index);
-  void readUniverse(uint16_t universe, EthernetUDP udp);
+  void readUniverse(uint16_t universe, EthernetUDP *Udp);
   bool hasUniverse(uint16_t universe);
   void removeUniverse(uint16_t universe);
   uint8_t getSize();

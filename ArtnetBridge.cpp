@@ -81,7 +81,7 @@ void ArtnetBridge::read() {
 
     incomingUniverse = artnetMeta[2] | artnetMeta[3] << 8;
     if (!storage.hasUniverse(incomingUniverse)) return;
-    storage.readUniverse(incomingUniverse, Udp);
+    storage.readUniverse(incomingUniverse, &Udp);
   } else if (opcode == ART_POLL) {
     // fill the rest of the reply struct
     // then send it to the network's broadcast address
