@@ -77,15 +77,12 @@ void ArtnetBridge::read() {
   opcode = artnetHead[8] | artnetHead[9] << 8;
 
   if (opcode == ART_DMX) {
-    Serial.println(F("ART_DMX"));
     Udp.read(artnetMeta, ART_META_LENGTH);
 
     incomingUniverse = artnetMeta[2] | artnetMeta[3] << 8;
     if (!storage.hasUniverse(incomingUniverse)) return;
     storage.readUniverse(incomingUniverse, Udp);
   } else if (opcode == ART_POLL) {
-    Serial.println(F("ART_POLL"));
-    return;
     // fill the rest of the reply struct
     // then send it to the network's broadcast address
     local_ip = Ethernet.localIP();
@@ -102,11 +99,11 @@ void ArtnetBridge::read() {
 }
 
 void ArtnetBridge::addRedirect(uint16_t universe, uint8_t port) {
-//  bool restartRequired = dmxStarted;
+  bool restartRequired = dmxStarted;
 
-//  if (restartRequired) dmxEnd();
+  if (restartRequired) dmxEnd();
   storage.newUniverse(universe, port);
-//  if (restartRequired) dmxBegin();
+  if (restartRequired) dmxBegin();
 }
 
 // The modern chips (168, 328P, 1280) use identical mappings.
