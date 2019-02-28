@@ -6,7 +6,7 @@ ArtnetBridge::ArtnetBridge() {}
 
 ArtnetBridgeStorage storage;
 
-void ArtnetBridge::setup(byte mac[], byte ip[], byte bc[]) {
+void ArtnetBridge::setup(byte mac[6], byte ip[4], byte bc[4]) {
   // set variables
   broadcast = bc;
 

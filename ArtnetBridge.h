@@ -62,7 +62,7 @@ class ArtnetBridge {
 public:
   ArtnetBridge();
 
-  void setup(byte mac[], byte ip[], byte bc[]);
+  void setup(byte mac[6], byte ip[4], byte bc[4]);
   void read();
   void addRedirect(uint16_t universe, uint8_t port);
 
