@@ -99,11 +99,9 @@ void ArtnetBridge::read() {
 }
 
 void ArtnetBridge::addRedirect(uint16_t universe, uint8_t port) {
-  bool restartRequired = dmxStarted;
-
-  if (restartRequired) dmxEnd();
+  if (dmxStarted) dmxEnd();
   storage.newUniverse(universe, port);
-  if (restartRequired) dmxBegin();
+  dmxBegin();
 }
 
 // The modern chips (168, 328P, 1280) use identical mappings.
